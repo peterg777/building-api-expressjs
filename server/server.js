@@ -7,11 +7,12 @@ const apiRouter = require('./routes');
 let app = express();
 
 
-app.use(express.static(clientPath));
+app.use(express.static('client'));
 
 
 app.use(cors());                    
-app.use(express.json());            
+app.use(express.json());   
+app.use(express.urlencoded({ extended: false }));
 app.use('/api', apiRouter);
 
 
