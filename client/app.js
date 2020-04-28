@@ -2,12 +2,14 @@
 $('form').submit((ev) => {
     ev.preventDefault();
 
-    let chirpText = $('#chirpText').val();
+    let chirpText = $('#chirptext').val();
+    let userinput = $('#userinput').val();
 
     $.ajax({
         type: 'POST',
         url: '/api/chirps',
         data: JSON.stringify({
+            user:userinput,
             text: chirpText
         }),
         contentType: 'application/json'
@@ -36,5 +38,15 @@ $.ajax({
 });
 
 function createChirp(chirp) {
+    $('ul').empty();
     $('.chirps').append(`<div class="col-12">${chirp.text}</div>`);
+}
+function deleteChirp(id) {
+	$.ajax({
+        type: 'DELETE',
+        url: '/api/chirps/' + id,   
+		
+	})
+	.then(() => getChirps())
+	.catch(err => console.log(err));
 }

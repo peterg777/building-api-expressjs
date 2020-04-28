@@ -17,15 +17,15 @@
                 <h2 class="text-center">Chirp Your Ass Off!</h2>
                 <form action="" method="POST" class="form-group p-3 my-3 rounded shadow-lg">
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control mb-2 shadow-sm" placeholder="Username" name="username">
+                    <input type="text" class="form-control mb-2 shadow-sm" id="userinput" placeholder="Username" name="username">
                     <label for="chirp">Chirp:</label>
-                    <textarea class="form-control" rows="3" placeholder="Enter Text Here" name="chirp"></textarea>
+                    <textarea class="form-control" rows="3" id="chirptext" placeholder="Enter Text Here" name="chirp"></textarea>
                     <button id="post-chirp" class="btn btn-dark btn-block w-75 mx-auto shadow-sm mt-3">Chirp
                         To Your Hearts Desire!!!</button>
                 </form>
             </div>
             <article class="col-md-7 my-3">
-                <ul class="list-group shadow"></ul>
+                <ul class="chirps list-group shadow"></ul>
             </article>
         </section>
     </main>
