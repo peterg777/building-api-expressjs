@@ -4,12 +4,12 @@ $('form').submit((ev) => {
 
     let chirpText = $('#chirptext').val();
     let userinput = $('#userinput').val();
-
+//sending JSon data
     $.ajax({
         type: 'POST',
         url: '/api/chirps',
         data: JSON.stringify({
-            user:userinput,
+            user: userinput,
             text: chirpText
         }),
         contentType: 'application/json'
@@ -19,7 +19,7 @@ $('form').submit((ev) => {
         console.log(err);
     });
 });
-
+// get request
 $.ajax({
     type: 'GET',
     url: '/api/chirps',
@@ -38,9 +38,12 @@ $.ajax({
 });
 
 function createChirp(chirp) {
+    // empties previous chirp
     $('ul').empty();
+    //append chirp
     $('.chirps').append(`<div class="col-12">${chirp.text}</div>`);
 }
+// delete request
 function deleteChirp(id) {
 	$.ajax({
         type: 'DELETE',
@@ -49,4 +52,14 @@ function deleteChirp(id) {
 	})
 	.then(() => getChirps())
 	.catch(err => console.log(err));
+}
+//edit chirp with put request
+function editChirp(user,text,chirp){
+    $.ajax({
+        type: 'PUT',
+        url:'/api/chirps/' + id,
+        data:{userinput, chirp: editChirp}
+    })
+    .then(() => getChirps())
+    .catch()
 }
